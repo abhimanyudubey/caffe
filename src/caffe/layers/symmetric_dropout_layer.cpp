@@ -26,7 +26,7 @@ void SymmetricDropoutLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
   NeuronLayer<Dtype>::Reshape(bottom, top);
   // Set up the cache for random number generation
   // ReshapeLike does not work because rand_vec_ is of Dtype uint
-  std::vector<int> bottom_shape = bottom[0]->shape;
+  std::vector<int> bottom_shape = bottom[0]->shape();
   bottom_shape[0] = bottom_shape[0]/2;
   // mask is half the size of bottom_mask
 
