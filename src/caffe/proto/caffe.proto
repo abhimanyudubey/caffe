@@ -459,6 +459,9 @@ message LayerParameter {
   optional STLossParameter st_loss_param = 149;
   optional PowerFileParameter power_file_param = 150;
   optional LocLossParameter loc_loss_param = 151;
+
+  //Symmetric Dropout
+  optional SymmetricDropoutParameter symmetric_dropout_param = 152;
 }
 
 // Message that stores parameters used to apply transformation
@@ -727,6 +730,10 @@ message DataParameter {
 }
 
 message DropoutParameter {
+  optional float dropout_ratio = 1 [default = 0.5]; // dropout ratio
+}
+
+message SymmetricDropoutParameter {
   optional float dropout_ratio = 1 [default = 0.5]; // dropout ratio
 }
 
