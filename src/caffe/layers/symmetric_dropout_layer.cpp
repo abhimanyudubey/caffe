@@ -14,7 +14,7 @@ void SymmetricDropoutLayer<Dtype>::LayerSetUp(const vector<Blob<Dtype>*>& bottom
   threshold_ = this->layer_param_.symmetric_dropout_param().dropout_ratio();
   DCHECK(threshold_ > 0.);
   DCHECK(threshold_ < 1.);
-  DCHECK(bottom[0]->shape[0] % 2 == 0);
+  DCHECK(bottom[0]->shape()[0] % 2 == 0);
   // batch_size has to be even for symmetric dropout to work
   scale_ = 1. / (1. - threshold_);
   uint_thres_ = static_cast<unsigned int>(UINT_MAX * threshold_);
@@ -26,7 +26,7 @@ void SymmetricDropoutLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
   NeuronLayer<Dtype>::Reshape(bottom, top);
   // Set up the cache for random number generation
   // ReshapeLike does not work because rand_vec_ is of Dtype uint
-  const std::vector<int> bottom_shape = bottom[0]->shape;
+  std::vector<int> bottom_shape = bottom[0]->shape;
   bottom_shape[0] = bottom_shape[0]/2;
   // mask is half the size of bottom_mask
 
