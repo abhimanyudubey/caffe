@@ -1342,6 +1342,7 @@ message V1LayerParameter {
   optional ConvolutionParameter convolution_param = 10;
   optional DataParameter data_param = 11;
   optional DropoutParameter dropout_param = 12;
+  optional SymmetricDropoutParameter symmetric_dropout_param = 43;
   optional DummyDataParameter dummy_data_param = 26;
   optional EltwiseParameter eltwise_param = 24;
   optional ExpParameter exp_param = 41;
