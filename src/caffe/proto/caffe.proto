@@ -462,6 +462,15 @@ message LayerParameter {
 
   //Symmetric Dropout
   optional SymmetricDropoutParameter symmetric_dropout_param = 152;
+
+  //Bilinear Params
+  optional CompactBilinearParameter compact_bilinear_param = 153;
+}
+
+// Compact Bilinear Params
+message CompactBilinearParameter {
+  optional uint32 num_output = 1;
+  optional bool sum_pool = 2 [default = true]; 
 }
 
 // Message that stores parameters used to apply transformation
